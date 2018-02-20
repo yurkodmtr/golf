@@ -1,16 +1,84 @@
 @import "RESET.less";   
-@import "../css/sprite.css";
 @import "elements.less";
 
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=cyrillic');
+
+/* font styles */
+.light {
+	font-weight:300;
+}
+.normal {
+	font-weight:400;
+}
+.semibold {
+	font-weight:600;
+}
+.bold {
+	font-weight:700;
+}
+.extrabold {
+	font-weight:800;
+}
+
+.letterspacing25 {
+	letter-spacing:0.25px;
+}
+.letterspacing50 {
+	letter-spacing:0.5px;
+}
+.letterspacing75 {
+	letter-spacing:0.75px;
+}
+.letterspacing100 {
+	letter-spacing:1px;
+}
+
+
+
+input, textarea, select {
+   -webkit-appearance: none;
+   .rounded(0px);
+} 
+
 body {
+	font-family: 'Open Sans', sans-serif;
+	* {
+		font-family: 'Open Sans', sans-serif;
+		.box-sizing(@sizing: border-box);
+	}
+	-webkit-text-size-adjust: none;
 	*:focus {
+		outline:none; 
+	}
+	a {
+		text-decoration:none;
+	}
+	background:#ebeced;
+	.opensans;
+	button {
+		border:none;
 		outline:none;
 	}
 } 
 
+.wrap {
+	width:100%;
+	overflow:hidden;
+	padding:0px 15px;
+}
+
 .center {
-	width:1000px;
+	width:100%;
+	max-width:1100px;
 	margin:0 auto;
+}
+
+/* footer */
+footer.footer {
+	background:#cccccc;
+	padding:20px 0px 20px 0px;
 }
 
 .pr {position:relative;}
