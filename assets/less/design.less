@@ -238,6 +238,16 @@ body {
 
 		/* drop */
 		.header__drop {
+			&:before {
+				content:'';
+				display:block;
+				width:1px;
+				height:16px;
+				background:@lightgrey;
+				position:absolute;
+				right:0px;
+				top:0px;
+			}
 			float:right;
 			position:relative;
 			padding:0px 15px 0px 15px;
@@ -278,7 +288,7 @@ body {
 					ul {
 						li {
 							display:block;
-							margin-bottom:5px;
+							margin-bottom:16px;
 							padding-left:15px;
 							a {
 								text-transform:uppercase;
