@@ -53,15 +53,36 @@ var customScript = function(){
 		});
 	}
 
+	/* mobileMenuToggle */
+	var mobileMenuToggle = function(){
+		$('.mobile_menu_toggle').click(function(){
+			if ($(this).hasClass('act')) {
+				$(this).removeClass('act');
+				$('.header__bottom').slideUp();
+			} else {
+				$(this).addClass('act');
+				$('.header__bottom').slideDown();
+			}
+		});
+	}
+
+	/* removeMobileMenu */
+	var removeMobileMenu = function(){
+		$('.mobile_menu_toggle').removeClass('act');
+		$('.header__bottom').slideUp();
+	}
+
 	$(document).ready(function(){	
+		mobileMenuToggle();
 		userToggle();	
 		headerDrop();
-		removePlaceholder();
+		removePlaceholder();		
 
 		/* carousel init */
 	  	$(".owl-header_gal").owlCarousel({
 	  		'items':1,
-	  		'pagintaion':true
+	  		'pagintaion':true,
+	  		'autoplay':true 
 	  	});
 	  	$(".owl-instructors_block").owlCarousel({
 	  		'items':2,
@@ -81,6 +102,7 @@ var customScript = function(){
 	$(window).resize(function(){
 		autoHeight($('.lessons_block .item .title'));
 		autoHeight($('.lessons_block .item .descr'));
+		removeMobileMenu();
 	});
 }
 
