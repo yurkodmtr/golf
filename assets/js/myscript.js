@@ -16,6 +16,10 @@ var customScript = function(){
 		if ( elem.length < 1 ) {
 			return false;
 		}
+		if ( window.innerWidth < 768 ) {
+			elem.css('height','auto');
+			return false;
+		}		
 		elem.css('height','auto');
 		var maxHeight = 0;
 		elem.each(function(){
@@ -68,15 +72,43 @@ var customScript = function(){
 
 	/* removeMobileMenu */
 	var removeMobileMenu = function(){
-		$('.mobile_menu_toggle').removeClass('act');
-		$('.header__bottom').slideUp();
+		if ( window.innerWidth <=1150 ) {
+			$('.mobile_menu_toggle').removeClass('act');
+			$('.header__bottom').hide();
+		} else {
+			$('.header__bottom').show();
+		}		
+	}
+
+	/* lessons block */
+	var lessonsBlock = function(){
+		$('._global_lesson_block__readmore').click(function(){
+			var elem = $(this).closest('.global_lesson_block');
+			if ( elem.hasClass('act') ) {
+				elem.removeClass('act');
+			} else {
+				elem.addClass('act')
+			}
+		});
+		$('.global_lesson_block .close').click(function(){
+			$(this).closest('.global_lesson_block').removeClass('act');
+		});
+		$('.global_lesson_block__mobiletext .btn__wrap a').click(function(){
+			var elem = $(this).closest('.global_lesson_block__wrap');
+			if ( elem.hasClass('act') ) {
+				elem.removeClass('act');
+			} else {
+				elem.addClass('act')
+			}
+		});
 	}
 
 	$(document).ready(function(){	
 		mobileMenuToggle();
 		userToggle();	
 		headerDrop();
-		removePlaceholder();		
+		removePlaceholder();	
+		lessonsBlock();	
 
 		/* carousel init */
 	  	$(".owl-header_gal").owlCarousel({
@@ -86,7 +118,15 @@ var customScript = function(){
 	  	});
 	  	$(".owl-instructors_block").owlCarousel({
 	  		'items':2,
-	  		'nav': true
+	  		'nav': true,
+	  		'responsive':{
+		        0:{
+		            items:1
+		        },
+		        768:{
+		            items:2
+		        }
+		    }
 	  	});
 	  	$(".owl-technologies_block").owlCarousel({
 	  		'items':1,
@@ -103,6 +143,7 @@ var customScript = function(){
 		autoHeight($('.lessons_block .item .title'));
 		autoHeight($('.lessons_block .item .descr'));
 		removeMobileMenu();
+	
 	});
 }
 
