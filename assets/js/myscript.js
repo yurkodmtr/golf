@@ -103,7 +103,29 @@ var customScript = function(){
 		});
 	}
 
-	$(document).ready(function(){	
+	/* fileOpen */
+	var fileOpen = function(){
+		$('._file_open').click(function(){
+			$(this).parent().find('input[type="file"]').click();
+		});
+	}
+
+	/* faq */
+	var faq = function(){
+		$('.faq_block .item .title').click(function(){
+			if ($(this).parent().hasClass('act')){
+				$(this).parent().removeClass('act');
+				$(this).next().slideUp();
+			} else {
+				$(this).parent().addClass('act');
+				$(this).next().slideDown();
+			}
+		});
+	}
+
+	$(document).ready(function(){
+		faq();	
+		fileOpen();
 		mobileMenuToggle();
 		userToggle();	
 		headerDrop();
@@ -114,7 +136,8 @@ var customScript = function(){
 	  	$(".owl-header_gal").owlCarousel({
 	  		'items':1,
 	  		'pagintaion':true,
-	  		'autoplay':true 
+	  		'autoplay':true,
+	  		'loop':true
 	  	});
 	  	$(".owl-instructors_block").owlCarousel({
 	  		'items':2,
@@ -131,6 +154,12 @@ var customScript = function(){
 	  	$(".owl-technologies_block").owlCarousel({
 	  		'items':1,
 	  		'nav':true
+	  	});
+	  	$(".owl-page_top_slider").owlCarousel({
+	  		'items':1,
+	  		'nav':true,
+	  		'autoplay':true,
+	  		'loop':true
 	  	});
 	});
 
